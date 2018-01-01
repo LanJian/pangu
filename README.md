@@ -1,0 +1,3 @@
+# Personal Provisioning
+
+`./run.sh`

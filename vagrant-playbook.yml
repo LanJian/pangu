@@ -1,0 +1,20 @@
+---
+- hosts: all
+  become: true
+  vars_files:
+    - variables.yml
+    - secrets.yml
+  pre_tasks:
+    - name: Install python for Ansible
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+      register: output
+      changed_when: output.stdout != ""
+      tags: always
+
+  tasks:
+    - name: Create user
+      user:
+        name: '{{ username }}'
+        password: "{{ password | password_hash('sha512') }}"
+        groups: sudo
+        append: yes
