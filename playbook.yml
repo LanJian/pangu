@@ -40,6 +40,15 @@
         - libssl-dev
         - libreadline-dev
         - htop
+        - xscreensaver
+        - dmenu
+
+    - name: Install Firefox
+      apt:
+        name: firefox=45*
+        state: present
+      become: yes
+      become_user: root
 
     # Install Hack fonts
     - stat: path=/usr/local/share/fonts/ttf/Hack-Regular.ttf
