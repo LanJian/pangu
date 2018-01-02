@@ -11,6 +11,20 @@
       tags: always
 
   tasks:
+    - name: Add Spotify apt key
+      apt_key:
+        keyserver: hkp://keyserver.ubuntu.com:80
+        id: 0DF731E45CE24F27EEEB1450EFDC8610341D9410
+      become: yes
+      become_user: root
+
+    - name: Add Spotify apt repo
+      apt_repository:
+        repo: deb http://repository.spotify.com stable non-free
+        state: present
+      become: yes
+      become_user: root
+
     - name: Update Apt
       apt: 
         update_cache: yes
@@ -42,6 +56,7 @@
         - htop
         - xscreensaver
         - dmenu
+        - spotify-client
 
     - name: Install Firefox
       apt:
