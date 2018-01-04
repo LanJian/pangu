@@ -59,6 +59,7 @@
         - dmenu
         - spotify-client
         - silversearcher-ag
+        - jq
 
     - name: Install Firefox
       apt:
