@@ -55,13 +55,22 @@
         - libreadline-dev
         - htop
         - xscreensaver
+        - libvdpau-va-gl1
         - dmenu
         - spotify-client
+        - silversearcher-ag
 
     - name: Install Firefox
       apt:
         name: firefox=45*
         state: present
+      become: yes
+      become_user: root
+
+    - name: Hold Firefox version
+      dpkg_selections:
+        name: firefox
+        selection: hold
       become: yes
       become_user: root
 
