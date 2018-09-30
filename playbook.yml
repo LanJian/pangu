@@ -60,6 +60,7 @@
         - spotify-client
         - silversearcher-ag
         - jq
+        - exuberant-ctags
 
     - name: Install Firefox
       apt:
