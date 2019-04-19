@@ -71,26 +71,27 @@
         # TODO: node/npm packages, figure out how to automate these
         #- tldr
 
-    - name: Install Firefox
-      apt:
-        name: firefox=45*
-        state: present
-      become: yes
-      become_user: root
+    # TODO: 04/2019, will try tridactyl with latest firefox, remove this after
+    #- name: Install Firefox
+    #  apt:
+    #    name: firefox=45*
+    #    state: present
+    #  become: yes
+    #  become_user: root
 
-    - name: Hold Firefox version
-      dpkg_selections:
-        name: firefox
-        selection: hold
-      become: yes
-      become_user: root
+    #- name: Hold Firefox version
+    #  dpkg_selections:
+    #    name: firefox
+    #    selection: hold
+    #  become: yes
+    #  become_user: root
 
     # Install Hack fonts
     - stat: path=/usr/local/share/fonts/ttf/Hack-Regular.ttf
       register: hack_font
 
     - name: Install Hack fonts
-      shell: wget -O /tmp/z.$$ "https://github.com/source-foundry/Hack/releases/download/v3.000/Hack-v3.000-ttf.zip" && unzip -f -d /usr/local/share/fonts /tmp/z.$$ && rm /tmp/z.$$
+      shell: wget -O /tmp/z.$$ "https://github.com/source-foundry/Hack/releases/download/v3.000/Hack-v3.000-ttf.zip" && unzip -d /usr/local/share/fonts /tmp/z.$$ && rm /tmp/z.$$
       when: hack_font.stat.exists == False
       become: yes
       become_user: root

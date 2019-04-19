@@ -1,0 +1,1 @@
+- need curl first before installing bat
