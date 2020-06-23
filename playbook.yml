@@ -65,6 +65,10 @@
         - jq
         - exuberant-ctags
         - ncdu
+        - xclip
+        - feh
+        - vlc
+        - mpv
         # TODO: rust/cargo packages, figure out how to automate these
         #- fd-find
         #- ripgrep
@@ -85,6 +89,13 @@
     #    selection: hold
     #  become: yes
     #  become_user: root
+  
+    # Install NVM
+    - name: nvm
+      shell: >
+        curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+      args:
+        creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
 
     # Install Hack fonts
     - stat: path=/usr/local/share/fonts/ttf/Hack-Regular.ttf
