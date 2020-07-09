@@ -5,7 +5,7 @@
     - secrets.yml
   pre_tasks:
     - name: Install python for Ansible
-      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python)
       register: output
       changed_when: output.stdout != ""
       tags: always
@@ -14,20 +14,6 @@
     - aeimer.install_bat
 
   tasks:
-    - name: Add Spotify apt key
-      apt_key:
-        keyserver: hkp://keyserver.ubuntu.com:80
-        id: 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
-      become: yes
-      become_user: root
-
-    - name: Add Spotify apt repo
-      apt_repository:
-        repo: deb http://repository.spotify.com stable non-free
-        state: present
-      become: yes
-      become_user: root
-
     - name: Update Apt
       apt: 
         update_cache: yes
@@ -60,7 +46,6 @@
         - xscreensaver
         - libvdpau-va-gl1
         - dmenu
-        - spotify-client
         - silversearcher-ag
         - jq
         - exuberant-ctags
@@ -164,7 +149,13 @@
 
     - name: Install ruby {{ ruby_version }}
       command: zsh -lc "~/.rbenv/bin/rbenv install {{ ruby_version }}"
-      when: ruby_installed|failed
+      when: ruby_installed is failed
 
     - name: Set global ruby to {{ ruby_version }}
       command: zsh -lc "~/.rbenv/bin/rbenv global {{ ruby_version }}"
+
+    - name: Install pyenv
+      git:
+        repo: 'ssh://git@github.com/pyenv/pyenv.git'
+        dest: ~/.pyenv
+        accept_hostkey: yes
