@@ -54,6 +54,8 @@
         - feh
         - vlc
         - mpv
+        - dunst
+        - rofi
         # TODO: rust/cargo packages, figure out how to automate these
         #- fd-find
         #- ripgrep
