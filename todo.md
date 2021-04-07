@@ -1,1 +1,11 @@
 - need curl first before installing bat
+- install zsh completions
+- install p10k
+- automate p10k config
+- automate p10k fonts
+- automate xscreesaver config and screensavers
+- detect screen size and dpi
+- automate tridactyl and userChrome, install firefox-csshacks
+- automate firefox plugins: dark reader
+- automate discord install
+- automate spotify install

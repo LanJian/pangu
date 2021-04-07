@@ -56,26 +56,9 @@
         - mpv
         - dunst
         - rofi
-        # TODO: rust/cargo packages, figure out how to automate these
-        #- fd-find
-        #- ripgrep
-        # TODO: node/npm packages, figure out how to automate these
-        #- tldr
-
-    # TODO: 04/2019, will try tridactyl with latest firefox, remove this after
-    #- name: Install Firefox
-    #  apt:
-    #    name: firefox=45*
-    #    state: present
-    #  become: yes
-    #  become_user: root
-
-    #- name: Hold Firefox version
-    #  dpkg_selections:
-    #    name: firefox
-    #    selection: hold
-    #  become: yes
-    #  become_user: root
+        - fd-find
+        - ripgrep
+        - tldr
   
     # Install NVM
     - name: nvm
