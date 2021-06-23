@@ -59,6 +59,7 @@
         - fd-find
         - ripgrep
         - tldr
+        - mplayer
   
     # Install NVM
     - name: nvm
