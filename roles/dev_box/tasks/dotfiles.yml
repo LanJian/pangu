@@ -1,0 +1,19 @@
+---
+- name: Download chezmoi installer
+  ansible.builtin.get_url:
+    url: "https://get.chezmoi.io/lb"
+    dest: "/tmp/install-chezmoi"
+    mode: '0755'
+
+- name: Install chezmoi
+  ansible.builtin.command:
+    cmd: "/tmp/install-chezmoi -b {{ paths.local_bin }}"
+    creates: "{{ chezmoi.executable_path }}"
+
+- name: Apply dotfiles
+  ansible.builtin.command:
+    cmd: >
+      "{{ chezmoi.executable_path }}" init
+      --apply {{ dotfiles.repo_url }}
+      --promptString "Email address={{ email }}"
+    creates: "{{ chezmoi.source_path }}"

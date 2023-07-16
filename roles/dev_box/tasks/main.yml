@@ -1,0 +1,20 @@
+---
+- name: Create directories
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/{{ item }}"
+    state: directory
+  loop:
+    - code
+    - packages
+    - sources
+    - screenshots
+    - screensavers
+
+- import_tasks: dotfiles.yml
+- import_tasks: asdf.yml
+- import_tasks: ohmyzsh.yml
+- import_tasks: nvim.yml
+- import_tasks: fzf.yml
+- import_tasks: golang.yml
+- import_tasks: python.yml
+- import_tasks: rust.yml

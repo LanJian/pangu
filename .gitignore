@@ -1,4 +1,4 @@
 *.log
 *.retry
 .vagrant
-secrets.yml
+**/secrets.yml

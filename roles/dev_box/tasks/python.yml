@@ -1,0 +1,7 @@
+---
+- name: Install python packages
+  ansible.builtin.command:
+    cmd: "{{ asdf.executable_path }} exec pip install {{ item }}"
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ ansible_user_dir }}/.asdf/bin"
+  loop: "{{ python.packages }}"

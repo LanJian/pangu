@@ -1,0 +1,26 @@
+---
+- name: Download ohmyzsh install script
+  ansible.builtin.get_url:
+    url: "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
+    dest: "/tmp/install-ohmyzsh"
+    mode: "0755"
+
+- name: Install ohmyzsh
+  ansible.builtin.command:
+    cmd: "/tmp/install-ohmyzsh --unattended --keep-zshrc"
+    creates: "{{ ansible_user_dir }}/.oh-my-zsh"
+
+- name: Install ohmyzsh plugins
+  ansible.builtin.git:
+    repo: "{{ item.repo_url }}"
+    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/plugins/{{ item.name }}"
+    version: "{{ item.version }}"
+  loop: "{{ ohmyzsh.plugins }}"
+
+- name: Install ohmyzsh themes
+  ansible.builtin.git:
+    repo: "{{ item.repo_url }}"
+    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/themes/{{ item.name }}"
+    version: "{{ item.version }}"
+    depth: 1
+  loop: "{{ ohmyzsh.themes }}"

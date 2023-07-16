@@ -1,0 +1,22 @@
+---
+- name: Install asdf
+  ansible.builtin.git:
+    repo: "https://github.com/asdf-vm/asdf.git"
+    dest: "{{ asdf.install_path }}"
+    version: "{{ asdf.version }}"
+
+- name: Parse plugins
+  ansible.builtin.command:
+    cmd: "cut --delimiter=' ' --fields=1 {{ ansible_user_dir }}/.tool-versions"
+  register: plugins
+
+- name: Add asdf plugins
+  ansible.builtin.command:
+    cmd: "{{ asdf.executable_path }} plugin add {{ item }}"
+  loop: "{{ plugins.stdout_lines }}"
+
+- name: Install asdf tools
+  ansible.builtin.command:
+    cmd: "{{ asdf.executable_path }} install"
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ ansible_user_dir }}/.asdf/bin"

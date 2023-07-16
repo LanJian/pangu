@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+
+  vars_files:
+    - ../vars/dev_box.yml
+
+  roles:
+    - role: ../roles/common
+      become: true
+    - role: ../roles/dev_box
+      become: true
+      become_user: "{{ username }}"

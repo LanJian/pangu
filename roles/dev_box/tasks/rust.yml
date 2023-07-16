@@ -1,0 +1,16 @@
+---
+- name: Download rustup installer
+  ansible.builtin.get_url:
+    url: "https://sh.rustup.rs"
+    dest: "/tmp/install-rustup"
+    mode: "0755"
+
+- name: Install rustup
+  ansible.builtin.command:
+    cmd: "/tmp/install-rustup -y"
+    creates: "{{ ansible_user_dir }}/.cargo"
+
+- name: Install rust binaries
+  ansible.builtin.command:
+    cmd: "{{ ansible_user_dir }}/.cargo/bin/cargo install {{ item }}"
+  loop: "{{ rust.packages }}"

@@ -1,0 +1,36 @@
+---
+- name: Update Apt
+  ansible.builtin.apt: 
+    update_cache: yes
+
+- name: Install APT packages
+  ansible.builtin.apt: 
+    pkg:
+      - build-essential
+      - cmake
+      - curl
+      - dmenu
+      - dunst
+      - feh
+      - git
+      - htop
+      - jq
+      - libreadline-dev
+      - libssl-dev
+      - zlib1g-dev
+      - libbz2-dev
+      - libffi-dev
+      - libsqlite3-dev
+      - liblzma-dev
+      - libyaml-dev
+      - libfuse-dev
+      - zsh
+      - keychain
+      - mplayer
+      - rofi
+      - tmux
+      - tree
+      - xclip
+      - xmobar
+      - xmonad
+      - xscreensaver

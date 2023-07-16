@@ -1,11 +1,9 @@
 # Personal Provisioning
 
-## Requirements
-- `sudo apt install ansible`
-
 ## Usage
-1. `sudo ./run.sh` to install python for ansible
-2. `./run.sh` to run the rest of the playbook
+On a fresh machine:
+1. Run `./bootstrap.sh` to install ansible
+2. Run the desired playbook. Example: `ansible-playbook --verbose playbooks/dev_box.yml`
 
 ## TODO
 - gnome theme: Materia-Cyberpunk-Neon

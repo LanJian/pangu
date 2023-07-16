@@ -1,0 +1,5 @@
+---
+- name: Install golang packages
+  ansible.builtin.command:
+    cmd: "{{ asdf.executable_path }} exec go install {{ item }}"
+  loop: "{{ golang.packages }}"

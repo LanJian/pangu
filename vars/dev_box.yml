@@ -1,0 +1,64 @@
+---
+username: "jackhxs"
+email: "jackhxs@gmail.com"
+
+paths:
+  local: "{{ ansible_user_dir }}/.local"
+  local_bin: "{{ ansible_user_dir }}/.local/bin"
+  local_share: "{{ ansible_user_dir }}/.local/share"
+
+github:
+  username: "lanjian"
+
+chezmoi:
+  executable_path: "{{ paths.local_bin }}/chezmoi"
+  source_path: "{{ paths.local_share }}/chezmoi"
+
+dotfiles:
+  repo_url: "https://github.com/{{ github.username }}/dotfiles.git"
+
+asdf:
+  version: "v0.12.0"
+  install_path: "{{ ansible_user_dir }}/.asdf"
+  executable_path: "{{ ansible_user_dir }}/.asdf/bin/asdf"
+
+golang:
+  packages:
+    - "github.com/gopasspw/gopass@latest"
+
+python:
+  packages:
+    - pynvim
+
+rust:
+  packages:
+    - bat
+    - cargo-watch
+    - du-dust
+    - evcxr_repl
+    - exa
+    - fd-find
+    - git-delta
+    - just
+    - navi
+    - ripgrep
+    - tealdeer
+
+ohmyzsh:
+  plugins:
+    - name: "zsh-completions"
+      repo_url: "https://github.com/zsh-users/zsh-completions"
+      version: "HEAD"
+    - name: "zsh-syntax-highlighting"
+      repo_url: "https://github.com/zsh-users/zsh-syntax-highlighting"
+      version: "HEAD"
+    - name: "zsh-autosuggestions"
+      repo_url: "https://github.com/zsh-users/zsh-autosuggestions"
+      version: "HEAD"
+  themes:
+    - name: "powerlevel10k"
+      repo_url: "https://github.com/romkatv/powerlevel10k.git"
+      version: "HEAD"
+
+nvim:
+  version: v0.9.1

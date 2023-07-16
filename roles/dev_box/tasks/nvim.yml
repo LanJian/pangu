@@ -1,0 +1,6 @@
+---
+- name: Install nvim
+  ansible.builtin.get_url:
+    url: "https://github.com/neovim/neovim/releases/download/{{ nvim.version }}/nvim.appimage"
+    dest: "{{ paths.local_bin }}/nvim"
+    mode: "0755"
