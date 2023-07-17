@@ -12,5 +12,4 @@
 
 - name: Install rust binaries
   ansible.builtin.command:
-    cmd: "{{ ansible_user_dir }}/.cargo/bin/cargo install {{ item }}"
-  loop: "{{ rust.packages }}"
+    cmd: "{{ ansible_user_dir }}/.cargo/bin/cargo install {{ rust.packages | join(' ') }}"

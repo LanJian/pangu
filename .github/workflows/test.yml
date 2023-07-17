@@ -3,7 +3,7 @@ name: Build and Test
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 16 * * *"
+    - cron: "0 14 * * *"
   push:
     branches:
       - master
