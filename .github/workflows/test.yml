@@ -20,5 +20,17 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Build
-        run: "docker build . -f dockerfiles/Dockerfile.${{ matrix.os }}"
+      - name: Build docker container
+        run: >
+          docker build .
+          -f dockerfiles/Dockerfile.${{ matrix.os }}
+          -t jackhxs/pangu
+
+      - name: Lint
+        run: >
+          docker run jackhxs/pangu ansible-lint
+
+      - name: Build and test
+        run: >
+          docker run jackhxs/pangu
+          ansible-playbook --verbose playbooks/dev_box.yml

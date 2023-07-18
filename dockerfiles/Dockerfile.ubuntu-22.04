@@ -19,6 +19,3 @@ RUN useradd \
 USER $username
 WORKDIR /home/$username/pangu
 COPY ./ ./
-
-RUN ["ansible-lint"]
-RUN ["ansible-playbook", "--verbose", "playbooks/dev_box.yml"]
