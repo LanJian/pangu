@@ -1,5 +1,6 @@
 ---
 - hosts: localhost
+  name: Dev box
 
   vars_files:
     - ../vars/dev_box.yml

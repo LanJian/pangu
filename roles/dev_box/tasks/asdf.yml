@@ -9,14 +9,18 @@
   ansible.builtin.command:
     cmd: "cut --delimiter=' ' --fields=1 {{ ansible_user_dir }}/.tool-versions"
   register: plugins
+  changed_when: false
 
 - name: Add asdf plugins
   ansible.builtin.command:
     cmd: "{{ asdf.executable_path }} plugin add {{ item }}"
+    creates: "{{ asdf.install_path }}/plugins/{{ item }}"
   loop: "{{ plugins.stdout_lines }}"
 
 - name: Install asdf tools
   ansible.builtin.command:
-    cmd: "{{ asdf.executable_path }} install"
+    cmd: "{{ asdf.executable_path }} install {{ item }}"
+    creates: "{{ asdf.install_path }}/installs/{{ item }}"
   environment:
     PATH: "{{ ansible_env.PATH }}:{{ ansible_user_dir }}/.asdf/bin"
+  loop: "{{ plugins.stdout_lines }}"

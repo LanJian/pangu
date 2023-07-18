@@ -3,8 +3,9 @@
   ansible.builtin.git:
     repo: "https://github.com/junegunn/fzf.git"
     dest: "{{ ansible_user_dir }}/.fzf"
-    depth: 1
+    version: "{{ fzf.version }}"
 
 - name: Install fzf
   ansible.builtin.command:
     cmd: "{{ ansible_user_dir }}/.fzf/install"
+    creates: "{{ ansible_user_dir }}/.fzf/bin/fzf"

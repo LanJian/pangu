@@ -1,10 +1,10 @@
 ---
 - name: Update Apt
-  ansible.builtin.apt: 
-    update_cache: yes
+  ansible.builtin.apt:
+    update_cache: true
 
 - name: Install APT packages
-  ansible.builtin.apt: 
+  ansible.builtin.apt:
     pkg:
       - build-essential
       - cmake

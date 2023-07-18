@@ -24,7 +24,8 @@ asdf:
 
 golang:
   packages:
-    - "github.com/gopasspw/gopass@latest"
+    gopass:
+      repo_url: "github.com/gopasspw/gopass@latest"
 
 python:
   packages:
@@ -46,19 +47,22 @@ rust:
 
 ohmyzsh:
   plugins:
-    - name: "zsh-completions"
+    zsh-completions:
       repo_url: "https://github.com/zsh-users/zsh-completions"
       version: "HEAD"
-    - name: "zsh-syntax-highlighting"
+    zsh-syntax-highlighting:
       repo_url: "https://github.com/zsh-users/zsh-syntax-highlighting"
       version: "HEAD"
-    - name: "zsh-autosuggestions"
+    zsh-autosuggestions:
       repo_url: "https://github.com/zsh-users/zsh-autosuggestions"
       version: "HEAD"
   themes:
-    - name: "powerlevel10k"
+    powerlevel10k:
       repo_url: "https://github.com/romkatv/powerlevel10k.git"
       version: "HEAD"
 
 nvim:
   version: v0.9.1
+
+fzf:
+  version: 0.42.0

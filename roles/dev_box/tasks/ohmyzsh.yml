@@ -12,15 +12,15 @@
 
 - name: Install ohmyzsh plugins
   ansible.builtin.git:
-    repo: "{{ item.repo_url }}"
-    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/plugins/{{ item.name }}"
-    version: "{{ item.version }}"
-  loop: "{{ ohmyzsh.plugins }}"
+    repo: "{{ item.value.repo_url }}"
+    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/plugins/{{ item.key }}"
+    version: "{{ item.value.version }}"
+  loop: "{{ ohmyzsh.plugins | dict2items }}"
 
 - name: Install ohmyzsh themes
   ansible.builtin.git:
-    repo: "{{ item.repo_url }}"
-    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/themes/{{ item.name }}"
-    version: "{{ item.version }}"
+    repo: "{{ item.value.repo_url }}"
+    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/themes/{{ item.key }}"
+    version: "{{ item.value.version }}"
     depth: 1
-  loop: "{{ ohmyzsh.themes }}"
+  loop: "{{ ohmyzsh.themes | dict2items }}"
