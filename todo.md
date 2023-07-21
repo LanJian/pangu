@@ -3,3 +3,5 @@
 - automate firefox plugins: dark reader
 - automate discord install
 - automate spotify install
+- gnome theme: Materia-Cyberpunk-Neon
+- gnome-terminal: fg #B8D6D8, bg #0F0414
