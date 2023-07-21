@@ -14,6 +14,12 @@
   ansible.builtin.command:
     cmd: >
       "{{ chezmoi.executable_path }}" init
-      --apply {{ dotfiles.repo_url }}
+      --apply {{ dotfiles.repo.https_url }}
       --promptString "Email address={{ email }}"
     creates: "{{ chezmoi.source_path }}"
+
+- name: Change dotfiles origin url # noqa: command-instead-of-module
+  ansible.builtin.command:
+    cmd: git remote set-url origin {{ dotfiles.repo.ssh_url }}
+    chdir: "{{ paths.local_share }}/chezmoi"
+  changed_when: true

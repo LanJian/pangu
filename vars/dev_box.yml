@@ -15,7 +15,9 @@ chezmoi:
   source_path: "{{ paths.local_share }}/chezmoi"
 
 dotfiles:
-  repo_url: "https://github.com/{{ github.username }}/dotfiles.git"
+  repo:
+    https_url: "https://github.com/{{ github.username }}/dotfiles.git"
+    ssh_url: "git@github.com:{{ github.username }}/dotfiles.git"
 
 asdf:
   version: "v0.12.0"
