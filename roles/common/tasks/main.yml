@@ -15,22 +15,23 @@
       - git
       - htop
       - jq
-      - libreadline-dev
-      - libssl-dev
-      - zlib1g-dev
+      - keychain
       - libbz2-dev
       - libffi-dev
-      - libsqlite3-dev
-      - liblzma-dev
-      - libyaml-dev
       - libfuse-dev
-      - zsh
-      - keychain
+      - liblzma-dev
+      - libreadline-dev
+      - libsqlite3-dev
+      - libssl-dev
+      - libyaml-dev
       - mplayer
       - rofi
+      - shellcheck
       - tmux
       - tree
       - xclip
       - xmobar
       - xmonad
       - xscreensaver
+      - zlib1g-dev
+      - zsh
