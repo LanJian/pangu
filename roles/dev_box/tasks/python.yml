@@ -2,5 +2,6 @@
 - name: Install python packages
   ansible.builtin.pip:
     name: "{{ python.packages }}"
+    executable: "{{ asdf.install_path }}/shims/pip"
   environment:
     PATH: "{{ ansible_env.PATH }}:{{ ansible_user_dir }}/.asdf/bin"
