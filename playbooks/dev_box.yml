@@ -8,6 +8,8 @@
   roles:
     - role: ../roles/common
       become: true
+    - role: ../roles/docker
+      become: true
     - role: ../roles/dev_box
       become: true
       become_user: "{{ username }}"
