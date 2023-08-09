@@ -11,7 +11,7 @@
     creates: "{{ ansible_user_dir }}/.cargo"
 
 - name: Install rust binaries
-  community.general.cargo:
-    name: "{{ rust.packages }}"
+  ansible.builtin.command:
+    cmd: "cargo install --locked {{ rust.packages | join(' ') }}"
   environment:
     PATH: "{{ ansible_env.PATH }}:{{ ansible_user_dir }}/.cargo/bin"

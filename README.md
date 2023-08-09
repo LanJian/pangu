@@ -12,3 +12,15 @@ To provision the machine:
 1. Run `./bootstrap.sh` to install ansible
 2. Run the desired playbook:
     * Dev box: `ansible-playbook --verbose --ask-become-pass playbooks/dev_box.yml`
+
+# Development
+
+To test, build an image from one of the Dockerfiles and run the desired
+playbook against it. Example:
+```
+docker build . \
+  -f dockerfiles/Dockerfile.ubuntu-22.04 \
+  -t lanjian/pangu
+docker run lanjian/pangu:latest \
+  ansible-playbook --verbose playbooks/dev_box.yml
+```
