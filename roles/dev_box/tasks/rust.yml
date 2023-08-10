@@ -13,5 +13,6 @@
 - name: Install rust binaries
   ansible.builtin.command:
     cmd: "cargo install --locked {{ rust.packages | join(' ') }}"
+  changed_when: true
   environment:
     PATH: "{{ ansible_env.PATH }}:{{ ansible_user_dir }}/.cargo/bin"
