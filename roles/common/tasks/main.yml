@@ -29,6 +29,7 @@
       - shellcheck
       - tmux
       - tree
+      - unzip
       - xclip
       - xmobar
       - xmonad
